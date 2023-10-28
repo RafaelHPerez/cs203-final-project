@@ -1,8 +1,6 @@
 import java.util.Random;
 import java.util.ArrayList;
-
-
-
+import java.util.*;
 
 //add to method to to roll the dice to move on the board
 int rand_int1 = rand.nextInt(6);
