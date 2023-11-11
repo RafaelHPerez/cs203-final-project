@@ -22,7 +22,9 @@ public static int rollofdice ()
     int dice1 = rand.nextInt(6) + 1;
     int dice2 = rand.nextInt(6) + 1;
     int roll = dice1 + dice2;
-    return roll;
+
+  return roll;
+  
 }
 
 public static ArrayList<String> createBoard()
