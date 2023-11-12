@@ -2,7 +2,7 @@ import java.util.*;
 public class monopoly{
 public static void main(String[] args) {
 //add to method to to roll the dice to move on the board
-System.out.println(rollofdice());
+rollofdice();
 //create property object to make an array list from
 //find type for array list bellow
 // ArrayList<> integer1 = new ArrayList<>();
@@ -13,20 +13,20 @@ System.out.println(rollofdice());
 // //find type for array list bellow
 // ArrayList<> integer3= new ArrayList<>();
 
+
 }// end main
 
 //roll method
-public static int rollofdice ()
+public static void rollofdice ()
 {
     Random rand = new Random();
     int dice1 = rand.nextInt(6) + 1;
     int dice2 = rand.nextInt(6) + 1;
     int roll = dice1 + dice2;
-//posibly add the sound of dice rolling. 
-  return roll;
-  
-}
-//method to move player forward 
+    System.out.println("You rolled a " + roll);
+//posibly add the sound of dice rolling.   
+}//end of rollofdice
+////method to move player forward 
 
 public static void move ()
 {
