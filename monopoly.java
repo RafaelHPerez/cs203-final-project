@@ -22,10 +22,19 @@ public static int rollofdice ()
     int dice1 = rand.nextInt(6) + 1;
     int dice2 = rand.nextInt(6) + 1;
     int roll = dice1 + dice2;
-
+//posibly add the sound of dice rolling. 
   return roll;
   
 }
+//method to move player forward 
+
+public static void move ()
+{
+    //int space =0;
+    //if(roll is less space){set space to that number and store it in player data and
+        //print how many spaces the player moved}
+}//end of move method.
+
 
 public static ArrayList<String> createBoard()
 {//ADD names of board spaces
@@ -80,6 +89,8 @@ public static ArrayList<String> createBoard()
 
 
 //add a while loop that keeps track of how many doubles each player has gotten per turn.  
+//resets after each turn
+//if they get 3 they go to jail. 
 
 
 
