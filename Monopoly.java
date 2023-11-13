@@ -90,7 +90,10 @@ public static ArrayList<String> createBoard()
     return board;
 
 }
-Stack<String> chnace = new Stack<String>();
+ArrayList<String> chance = new ArrayList<String>();
+Random rand = new Random();
+    int card = rand.nextInt(15) + 1;
+
 }//end class
 
 //figure out how to move players postiotion 
