@@ -3,6 +3,7 @@ public class monopoly{
 public static void main(String[] args) {
 //add to method to to roll the dice to move on the board
 rollofdice();
+
 //create property object to make an array list from
 //find type for array list bellow
 // ArrayList<> integer1 = new ArrayList<>();
@@ -80,7 +81,7 @@ public static ArrayList<String> createBoard()
     board.add("Luxury Tax");
     board.add("Boardwalk");
     return board;
-    
+
 }
 
 }//end class
@@ -91,9 +92,6 @@ public static ArrayList<String> createBoard()
 //add a while loop that keeps track of how many doubles each player has gotten per turn.  
 //resets after each turn
 //if they get 3 they go to jail. 
-
-
-
 //this may not be right but, its a start. this method rolls the dice and moves u forward.
 
    

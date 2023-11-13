@@ -16,5 +16,4 @@ public static void buildings ()//takes a data struture that has the buildings
 
 
 
-
-    }
+}//end of class
