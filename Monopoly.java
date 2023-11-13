@@ -93,8 +93,12 @@ public static ArrayList<String> createBoard()
 ArrayList<String> chance = new ArrayList<String>();
 Random rand = new Random();
     int card = rand.nextInt(15) + 1;
+    while( chane.size=<16){
+    if (card == 1) {
+        
+    }
 
-}//end class
+    }
 
 //figure out how to move players postiotion 
 
@@ -126,4 +130,111 @@ Random rand = new Random();
 
 
 //}
+}//end class
 // Method for player turns
+/*public static void playerturns {
+    if ( player1 is in jail){
+        if (player1 has a get out of jail free card){
+            ask player if they want to use it
+            if (yes){
+                remove get out of jail free card from player1
+                move player1 out of jail
+                roll dice
+                move player1
+            move to the next player
+            }
+            if (no){
+                move to the next player
+                }
+                if (player1 has rolled 3 doubles){
+                    move player1 to jail
+                    move to the next player
+                    }
+                    if ( player lands on property) {
+                       bring up property details
+                       ask player if they want to buy property
+                          if (yes){
+                            remove money from player1
+                            add property to player1
+                            }
+                            if (no){
+                                 move to the next player
+                                 }
+                                 if (player1 lands on property owned by another player){
+                                      remove rent / money from player1
+                                      add rent / money to player2
+                                      }
+                                        if (player1 lands on chance){
+                                        bring up chance card
+                                        do what chance card says
+                                        }
+                                        if (player1 lands on community chest){
+                                             bring up community chest card
+                                             do what community chest card says
+                                             }
+                                             if (player1 lands on go to jail){
+                                                  move player1 to jail
+                                                  }
+                                                  if (player1 lands on free parking){
+                                                    do nothing
+                                                    }
+                                                    if (player1 lands on go){
+                                                         add money to player1
+                                                         }
+                                                         if (player1 lands on income tax){
+                                                              remove money from player1
+                                                              }
+                                                              if (player1 lands on luxury tax){
+                                                                remove money from player1
+                                                                }
+                                                                if (player1 lands on electric company){
+                                                                     bring up electric company details
+                                                                     ask player if they want to buy electric company
+                                                                     if (yes){
+                                                                          remove money from player1
+                                                                          add electric company to player1
+                                                                          }
+                                                                          if (no){
+                                                                            move to the next player
+                                                                            }
+                                                                            if (player1 lands on water works){
+                                                                                 bring up water works details
+                                                                                 ask player if they want to buy water works
+                                                                                 if (yes){
+                                                                                      remove money from player1
+                                                                                      add water works to player1
+                                                                                      }
+                                                                                      if (no){
+                                                                                        move to the next player
+                                                                                        }
+                                                                                        if (player1 lands on railroad){
+                                                                                             bring up railroad details
+                                                                                             ask player if they want to buy railroad
+                                                                                             if (yes){
+                                                                                                  remove money from player1
+                                                                                                  add railroad to player1 
+                                                                                                  }
+                                                                                                  if(no){
+                                                                                                    move to the next player
+                                                                                                              }
+                                                                                                         }
+                                                                                                    }
+public static void end game check() {
+    if (player1 has no money){
+        System.out.println("player1 is bankrupt");
+        }
+        if (player2 has no money){
+            System.out.println("player2 is bankrupt");
+            }
+            if (player3 has no money){
+                System.out.println("player3 is bankrupt");
+                }
+                if (player4 has no money){
+                    System.out.println("player4 is bankrupt");
+                    }
+                    if(player1 has a property || player2 has a property || player3 has a property || player4 has a property){
+                     bring up property details and ask if they want to sell it
+                     add money to player1 or player2 or player3 or player4
+                       }
+                        if(player1.money < player.money )
+                  }
