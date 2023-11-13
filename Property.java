@@ -1,5 +1,7 @@
 
     public class Property{ 
+        public String name; 
+        public String color;
         public int cost;
         public int rent;
         public int mortgage;
@@ -7,10 +9,8 @@
         public int hotelCost;
         public int houses;
         public int hotels;
-        public int owner;
-        boolean mortgaged;
-        public String name;
-        public String color;
+        public Player owner;
+        public boolean mortgaged;
         public Property(int cost, int rent, int mortgage, int houseCost, int hotelCost, String name, String color){
             this.cost = cost;
             this.rent = rent;

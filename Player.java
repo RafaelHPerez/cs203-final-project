@@ -40,5 +40,5 @@ public Player (String Name)
 
 //there is still a bomb in here
 
-
+// need a getmoney method
 //end of class
