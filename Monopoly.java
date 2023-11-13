@@ -1,5 +1,5 @@
 import java.util.*;
-public class monopoly{
+public class Monopoly{
 public static void main(String[] args) {
 //add to method to to roll the dice to move on the board
 rollofdice();
@@ -24,10 +24,17 @@ public static void rollofdice ()
     int dice1 = rand.nextInt(6) + 1;
     int dice2 = rand.nextInt(6) + 1;
     int roll = dice1 + dice2;
-    System.out.println("You rolled a " + roll);
+int count=0;
+while(count<=3){
+if(dice1==dice2){count++;}
+if(dice1==dice2 && count==2){count++;}//add rest when turn is added
+if( dice1==dice2 && count==3){}//add once jail is added
+if(dice1!=dice2){break;}
+}
+System.out.println("You rolled a " + roll);
 //posibly add the sound of dice rolling.   
 }//end of rollofdice
-////method to move player forward 
+////method to move player forward //e
 
 public static void move ()
 {
@@ -83,7 +90,7 @@ public static ArrayList<String> createBoard()
     return board;
 
 }
-
+Stack<String> chnace = new Stack<String>();
 }//end class
 
 //figure out how to move players postiotion 
@@ -116,3 +123,4 @@ public static ArrayList<String> createBoard()
 
 
 //}
+// Method for player turns
