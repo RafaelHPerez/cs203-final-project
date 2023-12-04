@@ -1,18 +1,127 @@
 import java.util.*;
+import java.io.*;
 public class Monopoly 
 {
+    public static Player player1 = new Player();
+    public static Player player2 = new Player();
+    public static Player player3 = new Player();
+    public static Player player4 = new Player();
+
+    public static ArrayList<String> board = new ArrayList<String>();
+    public static Stack<String> chanceCards = new Stack<String>();
+    public static Stack<String> communityCards = new Stack<String>();
+    public static HashMap<String, Property> propertyDeck = new HashMap<String, Property>();
 
     public static void main(String[] args) 
     {
+        //Welcome and find number of players
+        int numberOfPlayers = 0;
+        numberOfPlayers = welcome();
         
         //createAll (instaniates board, players, cards, properties)
+        createGame(numberOfPlayers);
         
         //turns until game end
+        
 
     }// end main
 
+    public static int welcome()
+    {
+        System.out.println("welcome to monopoly");
+        System.out.println("enter the number of players (you can have 2 3 or 4 players)");
+        Scanner input = new Scanner(System.in);
+        int welcome = input.nextInt();
+        
+        return welcome;
+    }
+   
 
-//roll method
+    public static void turn()
+    {
+     System.out.println("do you want to take your turn?");
+     System.out.println("type y for yes and n for no");
+       Scanner input = new Scanner(System.in);
+        String  turn = input.nextLine();
+        if (turn.equals("y")){
+            rollofdice();
+            //do board method
+        }
+        else if (turn.equals("n")){
+            System.out.println("you have ended your turn");
+           break;
+        }
+        else{
+            System.out.println("please enter a valid input");
+            turn();
+        }
+
+
+    //call do board method
+    }
+
+    public static void createGame(int numberOfPlayers)
+    {
+        board = createBoard();
+        chanceCards = createChance();
+        communityCards = createCommunityChest();
+        propertyDeck = createProperties();
+
+
+        Scanner in = new Scanner(System.in);
+        if(numberOfPlayers == 2)
+        {
+            System.out.println("What is the name for Player 1 ?");
+            String p1 = in.nextLine();
+            player1.Name = p1;
+            player1.PlayerID = 1;
+            System.out.println("What is the name for Player 2 ?");
+            String p2 = in.nextLine();
+            player2.Name = p2;
+            player2.PlayerID = 2;
+        }
+        if(numberOfPlayers == 3)
+        {
+            System.out.println("What is the name for Player 1 ?");
+            String p1 = in.nextLine();
+            player1.Name = p1;
+            player1.PlayerID = 1;
+            System.out.println("What is the name for Player 2 ?");
+            String p2 = in.nextLine();
+            player2.Name = p2;
+            player2.PlayerID = 2;
+            System.out.println("What is the name for Player 3 ?");
+            String p3 = in.nextLine();
+            player3.Name = p3;
+            player3.PlayerID = 3;
+        }
+        if(numberOfPlayers == 4)
+        {
+            System.out.println("What is the name for Player 1 ?");
+            String p1 = in.nextLine();
+            player1.Name = p1;
+            player1.PlayerID = 1;
+            System.out.println("What is the name for Player 2 ?");
+            String p2 = in.nextLine();
+            player2.Name = p2;
+            player2.PlayerID = 2;
+            System.out.println("What is the name for Player 3 ?");
+            String p3 = in.nextLine();
+            player3.Name = p3;
+            player3.PlayerID = 3;
+            System.out.println("What is the name for Player 4 ?");
+            String p4 = in.nextLine();
+            player4.Name = p4;
+            player4.PlayerID = 4;
+        }
+        else
+        {
+            System.out.println("Error wrong number of players !!!!!!!!");
+        }
+        in.close();
+    }
+
+//roll method5
     public static void rollofdice ()
     {
         Random rand = new Random();
@@ -38,59 +147,124 @@ public class Monopoly
     {//ADD names of board spaces
         ArrayList<String> board = new ArrayList<String>();
         board.add("GO");
-        board.add("Mediterranean Avenue");
+        board.add("Mediterranean Avenue"); //proptery
         board.add("Community Chest");
-        board.add("Baltic Avenue");
+        board.add("Baltic Avenue"); //proptery
         board.add("Income Tax");
         board.add("Reading Railroad");
-        board.add("Oriental Avenue");
+        board.add("Oriental Avenue");//proptery
         board.add("Chance");
-        board.add("Vermont Avenue");
-        board.add("Connecticut Avenue");
+        board.add("Vermont Avenue");//proptery
+        board.add("Connecticut Avenue");//proptery
         board.add("Jail / Just Visiting");
-        board.add("St. Charles Place");
+        board.add("St. Charles Place");//proptery
         board.add("Electric Company");
-        board.add("States Avenue");
-        board.add("Virginia Avenue");
-        board.add("Pennsylvania Railroad");
-        board.add("St. James Place");
+        board.add("States Avenue"); //proptery
+        board.add("Virginia Avenue");//proptery
+        board.add("Pennsylvania Railroad");//railroad
+        board.add("St. James Place");//proptery
         board.add("Community Chest");
-        board.add("Tennessee Avenue");
-        board.add("New York Avenue");
+        board.add("Tennessee Avenue");//proptery
+        board.add("New York Avenue");//proptery
         board.add("Free Parking");
-        board.add("Kentucky Avenue");
+        board.add("Kentucky Avenue");//proptery
         board.add("Chance");
-        board.add("Indiana Avenue");
-        board.add("Illinois Avenue");
+        board.add("Indiana Avenue");//proptery
+        board.add("Illinois Avenue");//proptery
         board.add("B. & O. Railroad");
-        board.add("Atlantic Avenue");
-        board.add("Ventnor Avenue");
-        board.add("Water Works");
-        board.add("Marvin Gardens");
+        board.add("Atlantic Avenue");//proptery
+        board.add("Ventnor Avenue");//proptery
+        board.add("Water Works");//proptery
+        board.add("Marvin Gardens");//proptery
         board.add("Go To Jail");
         board.add("Pacific Avenue");
-        board.add("North Carolina Avenue");
+        board.add("North Carolina Avenue");//proptery
         board.add("Community Chest");
-        board.add("Pennsylvania Avenue");
+        board.add("Pennsylvania Avenue");//proptery
         board.add("Short Line");
         board.add("Chance");
-        board.add("Park Place");
+        board.add("Park Place");//proptery
         board.add("Luxury Tax");
-        board.add("Boardwalk");
+        board.add("Boardwalk");//proptery
         return board;
     }
+
+//create properties
     public static HashMap<String, Property> createProperties()
     {
+    
     HashMap<String, Property> propertyDeck = new HashMap<String, Property>();
-    Property prop1 = new Property(); //come back to next time
-    propertyDeck.put("",); 
+
+    Property prop1 = new Property("Mediterranean Avenue", "Brown", 60, 2, 30, 50);
+    Property prop2 = new Property("Baltic Avenue", "Brown", 60, 4, 30, 50);
+    Property prop3 = new Property("Oriental Avenue", "Light Blue", 100, 6, 50, 50);
+    Property prop4 = new Property("Vermont Avenue", "Light Blue", 100, 6, 50, 50);
+    Property prop5 = new Property("Connecticut Avenue", "Light Blue", 120, 8, 60, 50);  
+    Property prop6 = new Property("St. Charles Place", "Pink", 140, 10, 70, 100);
+    Property prop7 = new Property("States Avenue", "Pink", 140, 10, 70, 100);
+    Property prop8 = new Property("Virginia Avenue", "Pink", 160, 12, 80, 100);
+    Property prop9 = new Property("St. James Place", "Orange", 180, 14, 90, 100);
+    Property prop10 = new Property("Tennessee Avenue", "Orange", 180, 14, 90, 100);
+    Property prop11 = new Property("New York Avenue", "Orange", 200, 16, 100, 100);
+    Property prop12 = new Property("Kentucky Avenue", "Red", 220, 18, 110, 150);
+    Property prop13 = new Property("Indiana Avenue", "Red", 220, 18, 110, 150);
+    Property prop14 = new Property("Illinois Avenue", "Red", 240, 20, 120, 150);
+    Property prop15 = new Property("Atlantic Avenue", "Yellow", 260, 22, 130, 150);
+    Property prop16 = new Property("Ventnor Avenue", "Yellow", 260, 22, 130, 150);
+    Property prop17 = new Property("Marvin Gardens", "Yellow", 280, 24, 140, 150);
+    Property prop18 = new Property("Pacific Avenue", "Green", 300, 26, 150, 200);
+    Property prop19 = new Property("North Carolina Avenue", "Green", 300, 26, 150, 200);
+    Property prop20 = new Property("Pennsylvania Avenue", "Green", 320, 28, 160, 200);
+    Property prop21 = new Property("Park Place", "Blue", 350, 35, 175, 200);
+    Property prop22 = new Property("Boardwalk", "Blue", 400, 50, 200, 200);
+    
+    Property prop23 = new Property("Reading Railroad",  200, 25, 100);
+    Property prop24 = new Property("Pennsylvania Railroad",  200, 25, 100);
+    Property prop25 = new Property("B. & O. Railroad",  200, 25, 100);
+    Property prop26 = new Property("Short Line", 200, 25, 100); 
+    Property prop27 = new Property("Electric Company",  150, 0, 75);
+    Property prop28 = new Property("Water Works",  150, 0, 75);
+
+    
+    propertyDeck.put("Mediterranean Avenue", prop1); 
+    propertyDeck.put("Baltic Avenue", prop2);
+    propertyDeck.put("Oriental Avenue", prop3);
+    propertyDeck.put("Vermont Avenue", prop4);
+    propertyDeck.put("Connecticut Avenue", prop5);
+    propertyDeck.put("St. Charles Place", prop6);
+    propertyDeck.put("States Avenue", prop7);
+    propertyDeck.put("Virginia Avenue", prop8);
+    propertyDeck.put("St. James Place", prop9);
+    propertyDeck.put("Tennessee Avenue", prop10);
+    propertyDeck.put("New York Avenue", prop11);
+    propertyDeck.put("Kentucky Avenue", prop12);
+    propertyDeck.put("Indiana Avenue", prop13);
+    propertyDeck.put("Illinois Avenue", prop14);
+    propertyDeck.put("Atlantic Avenue", prop15);
+    propertyDeck.put("Ventnor Avenue", prop16);
+    propertyDeck.put("Marvin Gardens", prop17);
+    propertyDeck.put("Pacific Avenue", prop18);
+    propertyDeck.put("North Carolina Avenue", prop19);
+    propertyDeck.put("Pennsylvania Avenue", prop20);
+    propertyDeck.put("Park Place", prop21);
+    propertyDeck.put("Boardwalk", prop22);
+    
+    propertyDeck.put("Reading Railroad", prop23);
+    propertyDeck.put("Pennsylvania Railroad", prop24);
+    propertyDeck.put("B. & O. Railroad", prop25);
+    propertyDeck.put("Short Line", prop26);
+    propertyDeck.put("Electric Company", prop27);
+    propertyDeck.put("Water Works", prop28);
+    
+
+
     return propertyDeck;
     
     }
 
 
 
-    
+//create chance deck    
     public static Stack<String> createChance()
     {
         ArrayList<String> chance = new ArrayList<String>();
@@ -208,7 +382,122 @@ public class Monopoly
 
 //}
 
+public static void doBoard(String spaceLandedOn)
+{
 
+    //a giant switch statement for board effects
+
+    switch (spaceLandedOn)
+    {
+        case "In Jail":
+        if (player1.hasGetOutOfJailFreeCard()) {
+        // Ask player if they want to use it
+        if (player1.wantsToUseGetOutOfJailFreeCard()) {
+            // Remove get out of jail free card from player1
+            player1.removeGetOutOfJailFreeCard();
+            // Move player1 out of jail
+            player1.moveOutOfJail();
+            // Roll dice
+            int roll = player1.rollDice();
+            // Move player1
+            player1.move(roll);
+            // Move to the next player
+    game.nextPlayerTurn();
+    break;
+        }
+    }
+       case "Property":
+        {
+            Property currentProperty = board.getPropertyAt(player1.getPosition());
+    if (!currentProperty.isOwned()) {
+        // Ask player if they want to buy property
+        if (player1.wantsToBuyProperty(currentProperty)) {
+            // Remove money from player1
+            player1.removeMoney(currentProperty.getPrice());
+            // Add property to player1
+            player1.addProperty(currentProperty);
+            // Set the owner of the property
+            currentProperty.setOwner(player1);
+        }
+    } else if (currentProperty.getOwner() != player1) {
+        // Remove rent from player1
+        player1.removeMoney(currentProperty.getRent());
+        // Add rent to owner
+        currentProperty.getOwner().addMoney(currentProperty.getRent());
+    }
+    
+    // Move to the next player
+    game.nextPlayerTurn();
+        break;
+        }
+        
+            case "Chance":
+            {
+             //draw a chance card
+             ChanceCard chanceCard = game.drawChanceCard();   
+             //do what the chance card says
+             chanceCard.excuteAction(player1);
+             //move to next player
+             game.nextPlayerTurn();
+                break;
+            }
+            case "Community Chest":
+            {
+                // Draw a community chest card
+             CommunityChestCard communityChestCard = game.drawCommunityChestCard();
+                // Execute the action of the community chest card
+                communityChestCard.executeAction(player1);
+                // Move to the next player
+                game.nextPlayerTurn();
+                    break;
+                
+            }
+            case "Go To Jail":
+            {
+                // Move player1 to jail
+                 player1.moveToJail();
+                 // Move to the next player
+                    game.nextPlayerTurn();
+                    break;
+            }
+            case "Vist Jail":
+            {
+                game.nextPlayerTurn();
+                break;
+            }
+           case "Free Parking":
+           {
+               game.nextPlayerTurn();
+               break;
+           }
+           case "Go":
+           {
+               // Add money to player1
+               player1.addMoney(200);
+               // Move to the next player
+               game.nextPlayerTurn();
+               break;
+           }
+           case "income tax":
+           {
+               // Remove money from player1
+               player1.removeMoney(200);
+               // Move to the next player
+               game.nextPlayerTurn();
+               break;
+           }
+           case "Luxery Tax":
+           {
+               // Remove money from player1
+               player1.removeMoney(75);
+               // Move to the next player
+               game.nextPlayerTurn();
+               break;
+           }
+           
+
+}
+}
 
 
 // Method for player turns

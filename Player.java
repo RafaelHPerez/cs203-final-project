@@ -2,18 +2,19 @@ import java.util.*;
 public class Player{
 
 public String Name;
+public int PlayerID;
 public int funds;
 public int position;
-public ArrayList<Property> land;
-//i put a bomb here *tick tick boom* -AmO
-public Player (String Name)
+
+
+public Player ()
 {
-    this.Name = Name;
+    this.Name = "";
+    this.PlayerID = 0;
     this.funds = 1500;
     this.position= 0;
-    this.land = new ArrayList<Property>();
 }
-//there is still a bomb in here
+
 
 //method to store what  buildings each player has 
 // public static void buildings ()//takes a data struture that has the buildings 
@@ -27,7 +28,7 @@ public Player (String Name)
 }//end of class
 
 //
-//i put a bomb here *tick tick boom* -AmO
+
 //method to store what  buildings each player has 
 // public static void buildings ()//takes a data struture that has the buildings 
 // {
@@ -38,7 +39,8 @@ public Player (String Name)
 // }//end of buildings method.
 
 
-//there is still a bomb in here
+
 
 // need a getmoney method
+
 //end of class

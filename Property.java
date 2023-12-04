@@ -5,27 +5,57 @@
         public int cost;
         public int rent;
         public int mortgage;
-        public int houseCost;
-        public int hotelCost;
+        public int buildingCost;
         public int houses;
         public int hotels;
-        public Player owner;
+        public int owner;
         public boolean mortgaged;
-        public Property(int cost, int rent, int mortgage, int houseCost, int hotelCost, String name, String color){
+        public Property(String name, String color, int cost, int rent, int mortgage, int buildingCost){
+            this.name = name;
+            this.color = color;
             this.cost = cost;
             this.rent = rent;
             this.mortgage = mortgage;
-            this.houseCost = houseCost;
-            this.hotelCost = hotelCost;
-            this.name = name;
-            this.color = color;
+            this.buildingCost = buildingCost;
             this.houses = 0;
             this.hotels = 0;
             this.mortgaged = false;
-            this.owner = -1;
+            this.owner = 0;
         }
+        
+        //utility and railroad constructor
+        public Property(String name, int cost, int rent, int mortgage){
+        this.name = name;
+        this.cost = cost;
+        this.rent = rent;
+        this.mortgage = mortgage;
+        this.owner = 0;
+        this.mortgaged = false;
+        }
+        
+        
+        //     if(player lands on utility && player owns one utilities)
+        //     {
+        //         rent = 4 * rollofdice();
+        //     }
+        //     else if(player lands on utility && player owns both  utility
+        //     {
+        //         rent = 10 * rollofdice();
+        //     else 
+        //     {
+        //         rent = 10 * dice roll
+        //     }
+        //     if ( player lands on utility && it is not owned)
+        //     {
 
+        //     }
+    
        
     
 
 }
+
+
+
+
+//name, color, cost, site, Mortgage, Building cost
