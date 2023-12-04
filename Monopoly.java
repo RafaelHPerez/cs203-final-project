@@ -45,11 +45,12 @@ public class Monopoly
         String  turn = input.nextLine();
         if (turn.equals("y")){
             rollofdice();
+            //space landed on
             //do board method
         }
         else if (turn.equals("n")){
             System.out.println("you have ended your turn");
-           break;
+           //move to 
         }
         else{
             System.out.println("please enter a valid input");
@@ -354,6 +355,8 @@ public class Monopoly
  
 
 
+
+
 //add a while loop that keeps track of how many doubles each player has gotten per turn.  
 //resets after each turn
 //if they get 3 they go to jail. 
@@ -382,122 +385,122 @@ public class Monopoly
 
 //}
 
-public static void doBoard(String spaceLandedOn)
-{
+// public static void doBoard(String spaceLandedOn)
+// {
 
-    //a giant switch statement for board effects
+//     //a giant switch statement for board effects
 
-    switch (spaceLandedOn)
-    {
-        case "In Jail":
-        if (player1.hasGetOutOfJailFreeCard()) {
-        // Ask player if they want to use it
-        if (player1.wantsToUseGetOutOfJailFreeCard()) {
-            // Remove get out of jail free card from player1
-            player1.removeGetOutOfJailFreeCard();
-            // Move player1 out of jail
-            player1.moveOutOfJail();
-            // Roll dice
-            int roll = player1.rollDice();
-            // Move player1
-            player1.move(roll);
-            // Move to the next player
-    game.nextPlayerTurn();
-    break;
-        }
-    }
-       case "Property":
-        {
-            Property currentProperty = board.getPropertyAt(player1.getPosition());
-    if (!currentProperty.isOwned()) {
-        // Ask player if they want to buy property
-        if (player1.wantsToBuyProperty(currentProperty)) {
-            // Remove money from player1
-            player1.removeMoney(currentProperty.getPrice());
-            // Add property to player1
-            player1.addProperty(currentProperty);
-            // Set the owner of the property
-            currentProperty.setOwner(player1);
-        }
-    } else if (currentProperty.getOwner() != player1) {
-        // Remove rent from player1
-        player1.removeMoney(currentProperty.getRent());
-        // Add rent to owner
-        currentProperty.getOwner().addMoney(currentProperty.getRent());
-    }
+//     switch (spaceLandedOn)
+//     {
+//         case "In Jail":
+//         if (player1.hasGetOutOfJailFreeCard()) {
+//         // Ask player if they want to use it
+//         if (player1.wantsToUseGetOutOfJailFreeCard()) {
+//             // Remove get out of jail free card from player1
+//             player1.removeGetOutOfJailFreeCard();
+//             // Move player1 out of jail
+//             player1.moveOutOfJail();
+//             // Roll dice
+//             int roll = player1.rollDice();
+//             // Move player1
+//             player1.move(roll);
+//             // Move to the next player
+//     game.nextPlayerTurn();
+//     break;
+//         }
+//     }
+//        case "Property":
+//         {
+//             Property currentProperty = board.getPropertyAt(player1.getPosition());
+//     if (!currentProperty.isOwned()) {
+//         // Ask player if they want to buy property
+//         if (player1.wantsToBuyProperty(currentProperty)) {
+//             // Remove money from player1
+//             player1.removeMoney(currentProperty.getPrice());
+//             // Add property to player1
+//             player1.addProperty(currentProperty);
+//             // Set the owner of the property
+//             currentProperty.setOwner(player1);
+//         }
+//     } else if (currentProperty.getOwner() != player1) {
+//         // Remove rent from player1
+//         player1.removeMoney(currentProperty.getRent());
+//         // Add rent to owner
+//         currentProperty.getOwner().addMoney(currentProperty.getRent());
+//     }
     
-    // Move to the next player
-    game.nextPlayerTurn();
-        break;
-        }
+//     // Move to the next player
+//     game.nextPlayerTurn();
+//         break;
+//         }
         
-            case "Chance":
-            {
-             //draw a chance card
-             ChanceCard chanceCard = game.drawChanceCard();   
-             //do what the chance card says
-             chanceCard.excuteAction(player1);
-             //move to next player
-             game.nextPlayerTurn();
-                break;
-            }
-            case "Community Chest":
-            {
-                // Draw a community chest card
-             CommunityChestCard communityChestCard = game.drawCommunityChestCard();
-                // Execute the action of the community chest card
-                communityChestCard.executeAction(player1);
-                // Move to the next player
-                game.nextPlayerTurn();
-                    break;
+//             case "Chance":
+//             {
+//              //draw a chance card
+//              ChanceCard chanceCard = game.drawChanceCard();   
+//              //do what the chance card says
+//              chanceCard.excuteAction(player1);
+//              //move to next player
+//              game.nextPlayerTurn();
+//                 break;
+//             }
+//             case "Community Chest":
+//             {
+//                 // Draw a community chest card
+//              CommunityChestCard communityChestCard = game.drawCommunityChestCard();
+//                 // Execute the action of the community chest card
+//                 communityChestCard.executeAction(player1);
+//                 // Move to the next player
+//                 game.nextPlayerTurn();
+//                     break;
                 
-            }
-            case "Go To Jail":
-            {
-                // Move player1 to jail
-                 player1.moveToJail();
-                 // Move to the next player
-                    game.nextPlayerTurn();
-                    break;
-            }
-            case "Vist Jail":
-            {
-                game.nextPlayerTurn();
-                break;
-            }
-           case "Free Parking":
-           {
-               game.nextPlayerTurn();
-               break;
-           }
-           case "Go":
-           {
-               // Add money to player1
-               player1.addMoney(200);
-               // Move to the next player
-               game.nextPlayerTurn();
-               break;
-           }
-           case "income tax":
-           {
-               // Remove money from player1
-               player1.removeMoney(200);
-               // Move to the next player
-               game.nextPlayerTurn();
-               break;
-           }
-           case "Luxery Tax":
-           {
-               // Remove money from player1
-               player1.removeMoney(75);
-               // Move to the next player
-               game.nextPlayerTurn();
-               break;
-           }
+//             }
+//             case "Go To Jail":
+//             {
+//                 // Move player1 to jail
+//                  player1.moveToJail();
+//                  // Move to the next player
+//                     game.nextPlayerTurn();
+//                     break;
+//             }
+//             case "Vist Jail":
+//             {
+//                 game.nextPlayerTurn();
+//                 break;
+//             }
+//            case "Free Parking":
+//            {
+//                game.nextPlayerTurn();
+//                break;
+//            }
+//            case "Go":
+//            {
+//                // Add money to player1
+//                player1.addMoney(200);
+//                // Move to the next player
+//                game.nextPlayerTurn();
+//                break;
+//            }
+//            case "income tax":
+//            {
+//                // Remove money from player1
+//                player1.removeMoney(200);
+//                // Move to the next player
+//                game.nextPlayerTurn();
+//                break;
+//            }
+//            case "Luxery Tax":
+//            {
+//                // Remove money from player1
+//                player1.removeMoney(75);
+//                // Move to the next player
+//                game.nextPlayerTurn();
+//                break;
+//            }
            
 
-}
-}
+// }
+// }
 
 
 // Method for player turns
