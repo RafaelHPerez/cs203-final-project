@@ -15,6 +15,59 @@ public Player ()
     this.position= 0;
 }
 
+public void removeMoney(int amount)
+{
+    this.funds = this.funds - amount;
+}
+public void addMoney(int amount)
+{
+    this.funds = this.funds + amount;
+}
+public boolean wantsToBuyProperty(String propertyName, int cost)
+{
+    System.out.println("You have $" + this.funds + " in your account.");
+    System.out.println("The property you landed on is " + propertyName + ".");
+    System.out.println("It costs $" + cost + ". (remember at 0 funds you lose)");
+    Scanner input = new Scanner(System.in);
+    System.out.println("Do you want to buy " + propertyName + "? (y/n)");
+    String answer = input.nextLine();
+    if(answer.equals("y"))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+ 
+    public void setPlayerID(int playerID) {
+        this.PlayerID = playerID;
+    }
+    public int getPlayerID() {
+        return PlayerID;
+    }
+    public void setFunds(int funds) {
+        this.funds = funds;
+    }
+    public int getFunds() {
+        return funds;
+    }
+    public void setName(String name) {
+        Name = name;
+    }
+    public String getName() {
+        return Name;
+    }
+    public void setPosition(int position) {
+        this.position = position;
+    }
+    public int getPosition() {
+        return position;
+    }
+ 
+
 
 //method to store what  buildings each player has 
 // public static void buildings ()//takes a data struture that has the buildings 
