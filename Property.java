@@ -18,9 +18,9 @@
         public int owned2;
         public int owned3;
         public int owned4;
-
-        
         public boolean mortgaged;
+
+        //regular property constructor
         public Property(String name, String color, int cost, int rent, int colorset, int house1,int house2, int house3,int house4, int hotel, int mortgage, int buildingCost){
             this.name = name;
             this.color = color;

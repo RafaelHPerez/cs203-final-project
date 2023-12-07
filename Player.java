@@ -5,6 +5,7 @@ public String Name;
 public int PlayerID;
 public int funds;
 public int position;
+public boolean inJail;
 
 
 public Player ()
@@ -13,6 +14,7 @@ public Player ()
     this.PlayerID = 0;
     this.funds = 1500;
     this.position = 0;
+    this.inJail = false;
 }
 
 public void removeMoney(int amount)

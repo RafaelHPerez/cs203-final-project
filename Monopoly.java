@@ -32,6 +32,7 @@ public class Monopoly
         System.out.println("The game starts with each player having $1500. The game is played in rounds");
         System.out.println("There is no auctioning off properties, there are 2 chance cards missing and there is no trading.");
         System.out.println("There are 2 commmunity chest cards missing. Luxury tax is $100 and income tax is $200.");
+        System.out.println("the jail is not exactly based on the rules you can choose to not pay the 50$ indefinitely");
         System.out.println("and it ends when the first player goes bankrupt. So that it does not take forever to play.");
         System.out.println("enter the number of players currently the code will only work with 4 players");
         System.out.println("if you only have 1 friend you must go make more friends to play this game");
@@ -66,9 +67,388 @@ public class Monopoly
         String  turn = input.nextLine();
         if (turn.equals("y")){
 
+            checkJailAndDealWithIt(currentPlayerID);
+
             ArrayList<Integer> dice = rollofdice();
             int progress = dice.get(0);
-            if(currentPlayerID == 1)
+            int doubles = dice.get(1);
+            int doublesCount = 0;
+            if (doubles == 1)
+            {
+                doublesCount = doublesCount + 1;
+                if(doublesCount == 3)
+                {
+                jail(currentPlayerID);
+                }
+                changePosition(currentPlayerID, progress);
+            }
+            else
+            {
+                changePosition(currentPlayerID, progress);
+            }
+
+            monopolyIsOwned(currentPlayerID);
+
+            //space landed on
+            //do board method
+        }
+        else if (turn.equals("n")){
+            System.out.println("you have ended the game");
+            player1.funds = 0;
+            player2.funds = 0;
+            player3.funds = 0;
+            player4.funds = 0;
+           //move to 
+        }
+        else{
+            System.out.println("please enter a valid input");
+            turn(currentPlayerID);
+        }
+        
+    }
+    
+    public static void checkJailAndDealWithIt (int playerID)
+    {
+        if (playerID == 1)
+        {
+            if (player1.inJail == true)
+            {
+                System.out.println("You are in jail. You can either pay $50 to get out or roll doubles.");
+                System.out.println("Do you want to pay $50 to get out? Type y for yes and n for no.");
+                Scanner input = new Scanner(System.in);
+                String  turn = input.nextLine();
+                if (turn.equals("y"))
+                {
+                    player1.removeMoney(50);
+                    player1.inJail = false;
+                }
+                else if (turn.equals("n"))
+                {
+                    ArrayList<Integer> dice = rollofdice();
+                    int progress = dice.get(0);
+                    int doubles = dice.get(1);
+                    if (doubles == 1)
+                    {
+                        player1.inJail = false;
+                        changePosition(playerID, progress);
+                    }
+                    else
+                    {
+                        System.out.println("You did not roll doubles. You are still in jail.");
+                    }
+                }
+                else
+                {
+                    System.out.println("Please enter a valid input.");
+                    checkJailAndDealWithIt(playerID);
+                }
+            }
+        }
+        else if (playerID == 2)
+        {
+            if (player2.inJail == true)
+            {
+                System.out.println("You are in jail. You can either pay $50 to get out or roll doubles.");
+                System.out.println("Do you want to pay $50 to get out? Type y for yes and n for no.");
+                Scanner input = new Scanner(System.in);
+                String  turn = input.nextLine();
+                if (turn.equals("y"))
+                {
+                    player2.removeMoney(50);
+                    player2.inJail = false;
+                }
+                else if (turn.equals("n"))
+                {
+                    ArrayList<Integer> dice = rollofdice();
+                    int progress = dice.get(0);
+                    int doubles = dice.get(1);
+                    if (doubles == 1)
+                    {
+                        player2.inJail = false;
+                        changePosition(playerID, progress);
+                    }
+                    else
+                    {
+                        System.out.println("You did not roll doubles. You are still in jail.");
+                    }
+                }
+                else
+                {
+                    System.out.println("Please enter a valid input.");
+                    checkJailAndDealWithIt(playerID);
+                }
+            }
+        }
+        else if (playerID == 3)
+        {
+            if (player3.inJail == true)
+            {
+                System.out.println("You are in jail. You can either pay $50 to get out or roll doubles.");
+                System.out.println("Do you want to pay $50 to get out? Type y for yes and n for no.");
+                Scanner input = new Scanner(System.in);
+                String  turn = input.nextLine();
+                if (turn.equals("y"))
+                {
+                    player3.removeMoney(50);
+                    player3.inJail = false;
+                }
+                else if (turn.equals("n"))
+                {
+                    ArrayList<Integer> dice = rollofdice();
+                    int progress = dice.get(0);
+                    int doubles = dice.get(1);
+                    if (doubles == 1)
+                    {
+                        player3.inJail = false;
+                        changePosition(playerID, progress);
+                    }
+                    else
+                    {
+                        System.out.println("You did not roll doubles. You are still in jail.");
+                    }
+                }
+                else
+                {
+                    System.out.println("Please enter a valid input.");
+                    checkJailAndDealWithIt(playerID);
+                }
+            }
+        }
+        else if (playerID == 4)
+        {
+            if (player4.inJail == true)
+            {
+                System.out.println("You are in jail. You can either pay $50 to get out or roll doubles.");
+                System.out.println("Do you want to pay $50 to get out? Type y for yes and n for no.");
+                Scanner input = new Scanner(System.in);
+                String  turn = input.nextLine();
+                if (turn.equals("y"))
+                {
+                    player4.removeMoney(50);
+                    player4.inJail = false;
+                }
+                else if (turn.equals("n"))
+                {
+                    ArrayList<Integer> dice = rollofdice();
+                    int progress = dice.get(0);
+                    int doubles = dice.get(1);
+                    if (doubles == 1)
+                    {
+                        player4.inJail = false;
+                        changePosition(playerID, progress);
+                    }
+                    else
+                    {
+                        System.out.println("You did not roll doubles. You are still in jail.");
+                    }
+                }
+                else
+                {
+                    System.out.println("Please enter a valid input.");
+                    checkJailAndDealWithIt(playerID);
+                }
+            }
+        }
+    }
+
+    public static void monopolyIsOwned(int playerID)
+    {
+        if(propertyDeck.get("Mediterranean Avenue").getOwner() == playerID && propertyDeck.get("Baltic Avenue").getOwner() == playerID)
+        {
+            checkIfTheyWannaBuild("Mediterranean Avenue", playerID);
+            checkIfTheyWannaBuild("Baltic Avenue", playerID);
+            return;
+        }
+        else if(propertyDeck.get("Oriental Avenue").getOwner() == playerID && propertyDeck.get("Vermont Avenue").getOwner() == playerID && propertyDeck.get("Connecticut Avenue").getOwner() == playerID)
+        {
+            checkIfTheyWannaBuild("Oriental Avenue", playerID);
+            checkIfTheyWannaBuild("Vermont Avenue", playerID);
+            checkIfTheyWannaBuild("Connecticut Avenue", playerID);
+            return;
+        }
+        else if(propertyDeck.get("St. Charles Place").getOwner() == playerID && propertyDeck.get("States Avenue").getOwner() == playerID && propertyDeck.get("Virginia Avenue").getOwner() == playerID)
+        {
+            checkIfTheyWannaBuild("St. Charles Place", playerID);
+            checkIfTheyWannaBuild("States Avenue", playerID);
+            checkIfTheyWannaBuild("Virginia Avenue", playerID);
+            return;
+        }
+        else if(propertyDeck.get("St. James Place").getOwner() == playerID && propertyDeck.get("Tennessee Avenue").getOwner() == playerID && propertyDeck.get("New York Avenue").getOwner() == playerID)
+        {
+            checkIfTheyWannaBuild("St. James Place", playerID);
+            checkIfTheyWannaBuild("Tennessee Avenue", playerID);
+            checkIfTheyWannaBuild("New York Avenue", playerID);
+            return;
+        }
+        else if(propertyDeck.get("Kentucky Avenue").getOwner() == playerID && propertyDeck.get("Indiana Avenue").getOwner() == playerID && propertyDeck.get("Illinois Avenue").getOwner() == playerID)
+        {
+            checkIfTheyWannaBuild("Kentucky Avenue", playerID);
+            checkIfTheyWannaBuild("Indiana Avenue", playerID);
+            checkIfTheyWannaBuild("Illinois Avenue", playerID);
+            return;
+        }
+        else if(propertyDeck.get("Atlantic Avenue").getOwner() == playerID && propertyDeck.get("Ventnor Avenue").getOwner() == playerID && propertyDeck.get("Marvin Gardens").getOwner() == playerID)
+        {
+            checkIfTheyWannaBuild("Atlantic Avenue", playerID);
+            checkIfTheyWannaBuild("Ventnor Avenue", playerID);
+            checkIfTheyWannaBuild("Marvin Gardens", playerID);
+            return;
+        }
+        else if(propertyDeck.get("Pacific Avenue").getOwner() == playerID && propertyDeck.get("North Carolina Avenue").getOwner() == playerID && propertyDeck.get("Pennsylvania Avenue").getOwner() == playerID)
+        {
+            checkIfTheyWannaBuild("Pacific Avenue", playerID);
+            checkIfTheyWannaBuild("North Carolina Avenue", playerID);
+            checkIfTheyWannaBuild("Pennsylvania Avenue", playerID);
+            return;
+        }
+        else if(propertyDeck.get("Park Place").getOwner() == playerID && propertyDeck.get("Boardwalk").getOwner() == playerID)
+        {
+            checkIfTheyWannaBuild("Park Place", playerID);
+            checkIfTheyWannaBuild("Boardwalk", playerID);
+            return;
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    //this method takes in playerID and checks if they wanna build
+    //they can only build if they have all the properties in a color group
+    public static void checkIfTheyWannaBuild(String propName, int playerID)
+    {
+        if(playerID == 1)
+        {
+            Property currentProperty = propertyDeck.get(propName);
+            System.out.println("It costs $" + currentProperty.getBuildingCost() + " to build a house on " + propName + ".");
+            System.out.println("Do you want to build on " + propName + "? Type y for yes and n for no.");
+            Scanner input = new Scanner(System.in);
+            String  answer = input.nextLine();
+            if (answer.equals("y"))
+            {
+                player1.removeMoney(currentProperty.getBuildingCost());
+                currentProperty.houses = currentProperty.houses + 1;
+                if(currentProperty.houses == 5)
+                {
+                    currentProperty.houses = 0;
+                    currentProperty.hotels = 1;
+                }
+                else
+                {
+                    //do nothing
+                }
+            }
+            else if (answer.equals("n"))
+            {
+                //do nothing
+            }
+            else
+            {
+                System.out.println("Please enter a valid input.");
+                checkIfTheyWannaBuild(propName, playerID);
+            }
+
+        }
+        else if(playerID == 2)
+        {
+            Property currentProperty = propertyDeck.get(propName);
+            System.out.println("It costs $" + currentProperty.getBuildingCost() + " to build a house on " + propName + ".");
+            System.out.println("Do you want to build on " + propName + "? Type y for yes and n for no.");
+            Scanner input = new Scanner(System.in);
+            String  answer = input.nextLine();
+            if (answer.equals("y"))
+            {
+                player2.removeMoney(currentProperty.getBuildingCost());
+                currentProperty.houses = currentProperty.houses + 1;
+                if(currentProperty.houses == 5)
+                {
+                    currentProperty.houses = 0;
+                    currentProperty.hotels = 1;
+                }
+                else
+                {
+                    //do nothing
+                }
+            }
+            else if (answer.equals("n"))
+            {
+                //do nothing
+            }
+            else
+            {
+                System.out.println("Please enter a valid input.");
+                checkIfTheyWannaBuild(propName, playerID);
+            }
+
+        }
+        else if(playerID == 3)
+        {
+            Property currentProperty = propertyDeck.get(propName);
+            System.out.println("It costs $" + currentProperty.getBuildingCost() + " to build a house on " + propName + ".");
+            System.out.println("Do you want to build on " + propName + "? Type y for yes and n for no.");
+            Scanner input = new Scanner(System.in);
+            String  answer = input.nextLine();
+            if (answer.equals("y"))
+            {
+                player3.removeMoney(currentProperty.getBuildingCost());
+                currentProperty.houses = currentProperty.houses + 1;
+                if(currentProperty.houses == 5)
+                {
+                    currentProperty.houses = 0;
+                    currentProperty.hotels = 1;
+                }
+                else
+                {
+                    //do nothing
+                }
+            }
+            else if (answer.equals("n"))
+            {
+                //do nothing
+            }
+            else
+            {
+                System.out.println("Please enter a valid input.");
+                checkIfTheyWannaBuild(propName, playerID);
+            }
+
+        }
+        else if(playerID == 4)
+        {
+            Property currentProperty = propertyDeck.get(propName);
+            System.out.println("It costs $" + currentProperty.getBuildingCost() + " to build a house on " + propName + ".");
+            System.out.println("Do you want to build on " + propName + "? Type y for yes and n for no.");
+            Scanner input = new Scanner(System.in);
+            String  answer = input.nextLine();
+            if (answer.equals("y"))
+            {
+                player4.removeMoney(currentProperty.getBuildingCost());
+                currentProperty.houses = currentProperty.houses + 1;
+                if(currentProperty.houses == 5)
+                {
+                    currentProperty.houses = 0;
+                    currentProperty.hotels = 1;
+                }
+                else
+                {
+                    //do nothing
+                }
+            }
+            else if (answer.equals("n"))
+            {
+                //do nothing
+            }
+            else
+            {
+                System.out.println("Please enter a valid input.");
+                checkIfTheyWannaBuild(propName, playerID);
+            }
+        }
+    }
+
+    public static void changePosition(int currentPlayerID, int progress)
+    {
+        if(currentPlayerID == 1)
             {
                 player1.setPosition(player1.getPosition() + progress);
                 doBoard(player1.getPosition(), currentPlayerID);
@@ -88,22 +468,6 @@ public class Monopoly
                 player4.setPosition(player4.getPosition() + progress);
                 doBoard(player4.getPosition(), currentPlayerID);
             }
-            //space landed on
-            //do board method
-        }
-        else if (turn.equals("n")){
-            System.out.println("you have ended the game");
-            player1.funds = 0;
-            player2.funds = 0;
-            player3.funds = 0;
-            player4.funds = 0;
-           //move to 
-        }
-        else{
-            System.out.println("please enter a valid input");
-            turn(currentPlayerID);
-        }
-        
     }
 
     public static void createGame(int numberOfPlayers)
@@ -447,10 +811,11 @@ public static void checkPropertyStatus(int playerID, String propertyName)
     } // end buy contingency
 
     //paying rent 
-    else if (currentProperty.getOwner() != playerID) {
+    else if ((currentProperty.getOwner() != playerID) && (currentProperty.getMortgaged() != true)){
         // Remove rent from playerID
         if (playerID == 1)
         {
+            checkIfTheyWannaSellStuff(playerID);
             player1.removeMoney(currentProperty.getRent());
             // Add rent to owner
             if(currentProperty.getOwner() == 2)
@@ -469,6 +834,7 @@ public static void checkPropertyStatus(int playerID, String propertyName)
         }
         else if (playerID == 2)
         {
+            checkIfTheyWannaSellStuff(playerID);
             player2.removeMoney(currentProperty.getRent());
             // Add rent to owner
             if(currentProperty.getOwner() == 1)
@@ -486,6 +852,7 @@ public static void checkPropertyStatus(int playerID, String propertyName)
         }
         else if (playerID == 3)
         {
+            checkIfTheyWannaSellStuff(playerID);
             player3.removeMoney(currentProperty.getRent());
             // Add rent to owner
             if(currentProperty.getOwner() == 1)
@@ -503,6 +870,7 @@ public static void checkPropertyStatus(int playerID, String propertyName)
         }
         else if (playerID == 4)
         {
+            checkIfTheyWannaSellStuff(playerID);
             player4.removeMoney(currentProperty.getRent());
             // Add rent to owner
             if(currentProperty.getOwner() == 1)
@@ -520,6 +888,106 @@ public static void checkPropertyStatus(int playerID, String propertyName)
         }
     }
     return;
+}
+
+public static void checkIfTheyWannaSellStuff(int playerID)
+{
+    if (playerID == 1)
+    {
+        System.out.println("Do you want to sell any of your properties? Type y for yes and n for no.");
+        Scanner input = new Scanner(System.in);
+        String  turn = input.nextLine();
+        if (turn.equals("y"))
+        {
+            System.out.println("Which property do you want to sell?");
+            String  property = input.nextLine();
+            Property currentProperty = propertyDeck.get(property);
+            int propertyCost = currentProperty.getCost();
+            player1.addMoney(propertyCost);
+            currentProperty.setOwner(0);
+        }
+        else if (turn.equals("n"))
+        {
+            //do nothing
+        }
+        else
+        {
+            System.out.println("Please enter a valid input.");
+            checkIfTheyWannaSellStuff(playerID);
+        }
+    }
+    else if (playerID == 2)
+    {
+        System.out.println("Do you want to sell any of your properties? Type y for yes and n for no.");
+        Scanner input = new Scanner(System.in);
+        String  turn = input.nextLine();
+        if (turn.equals("y"))
+        {
+            System.out.println("Which property do you want to sell?");
+            String  property = input.nextLine();
+            Property currentProperty = propertyDeck.get(property);
+            int propertyCost = currentProperty.getCost();
+            player2.addMoney(propertyCost);
+            currentProperty.setOwner(0);
+        }
+        else if (turn.equals("n"))
+        {
+            //do nothing
+        }
+        else
+        {
+            System.out.println("Please enter a valid input.");
+            checkIfTheyWannaSellStuff(playerID);
+        }
+    }
+    else if (playerID == 3)
+    {
+        System.out.println("Do you want to sell any of your properties? Type y for yes and n for no.");
+        Scanner input = new Scanner(System.in);
+        String  turn = input.nextLine();
+        if (turn.equals("y"))
+        {
+            System.out.println("Which property do you want to sell?");
+            String  property = input.nextLine();
+            Property currentProperty = propertyDeck.get(property);
+            int propertyCost = currentProperty.getCost();
+            player3.addMoney(propertyCost);
+            currentProperty.setOwner(0);
+        }
+        else if (turn.equals("n"))
+        {
+            //do nothing
+        }
+        else
+        {
+            System.out.println("Please enter a valid input.");
+            checkIfTheyWannaSellStuff(playerID);
+        }
+    }
+    else if (playerID == 4)
+    {
+        System.out.println("Do you want to sell any of your properties? Type y for yes and n for no.");
+        Scanner input = new Scanner(System.in);
+        String  turn = input.nextLine();
+        if (turn.equals("y"))
+        {
+            System.out.println("Which property do you want to sell?");
+            String  property = input.nextLine();
+            Property currentProperty = propertyDeck.get(property);
+            int propertyCost = currentProperty.getCost();
+            player4.addMoney(propertyCost);
+            currentProperty.setOwner(0);
+        }
+        else if (turn.equals("n"))
+        {
+            //do nothing
+        }
+        else
+        {
+            System.out.println("Please enter a valid input.");
+            checkIfTheyWannaSellStuff(playerID);
+        }
+    }
 }
 
 public static void doBoard(int spaceLanded, int playerID)
@@ -711,7 +1179,7 @@ public static void doBoard(int spaceLanded, int playerID)
         {
             //Make a Jail method
             
-            if (playerID == 1) && ( )
+            if (playerID == 1)
             {
                 //do jail stuff
                 player1.setPosition(10);
@@ -812,25 +1280,25 @@ public static void doBoard(int spaceLanded, int playerID)
 }//end doBoard
 
 
-public static void jail()
+public static void jail(int playerID)
 {
     //do jail stuff
-if (playerID == 1)
-{
-    player1.setPosition(10);
-}
-else if (playerID == 2)
-{
-    player2.setPosition(10);
-}
-else if (playerID == 3)
-{
-    player3.setPosition(10);
-}
-else if (playerID == 4)
-{
-    player4.setPosition(10);
-}
+    if (playerID == 1)
+    {
+        player1.inJail = true;
+    }
+    else if (playerID == 2)
+    {
+        player2.inJail = true;
+    }
+    else if (playerID == 3)
+    {
+        player3.inJail = true;
+    }
+    else if (playerID == 4)
+    {
+        player4.inJail = true;
+    }
 }
 
 
