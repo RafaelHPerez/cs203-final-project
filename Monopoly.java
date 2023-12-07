@@ -65,7 +65,29 @@ public class Monopoly
         Scanner input = new Scanner(System.in);
         String  turn = input.nextLine();
         if (turn.equals("y")){
-            rollofdice();
+
+            ArrayList<Integer> dice = rollofdice();
+            int progress = dice.get(0);
+            if(currentPlayerID == 1)
+            {
+                player1.setPosition(player1.getPosition() + progress);
+                doBoard(player1.getPosition(), currentPlayerID);
+            }
+            else if(currentPlayerID == 2)
+            {
+                player2.setPosition(player2.getPosition() + progress);
+                doBoard(player2.getPosition(), currentPlayerID);
+            }
+            else if(currentPlayerID == 3)
+            {
+                player3.setPosition(player3.getPosition() + progress);
+                doBoard(player3.getPosition(), currentPlayerID);
+            }
+            else if(currentPlayerID == 4)
+            {
+                player4.setPosition(player4.getPosition() + progress);
+                doBoard(player4.getPosition(), currentPlayerID);
+            }
             //space landed on
             //do board method
         }
@@ -81,6 +103,7 @@ public class Monopoly
             System.out.println("please enter a valid input");
             turn(currentPlayerID);
         }
+        
     }
 
     public static void createGame(int numberOfPlayers)
@@ -145,23 +168,26 @@ public class Monopoly
     }
 
 //roll method5
-    public static void rollofdice ()
+    public static ArrayList<Integer> rollofdice ()
     {
+        ArrayList<Integer> dice = new ArrayList<Integer>();
         Random rand = new Random();
         int dice1 = rand.nextInt(6) + 1;
         int dice2 = rand.nextInt(6) + 1;
         int roll = dice1 + dice2;
-        int count=0;
-        while(count<=3)
+        dice.add(roll);
+        
+        if(dice1 == dice2)
         {
-            if(dice1==dice2){count++;}
-            if(dice1==dice2 && count==2){count++;}//add rest when turn is added
-            if(dice1==dice2 && count==3){}//add once jail is added
-            if(dice1!=dice2){break;
-            
+            dice.add(1);
         }
+        else
+        {
+            dice.add(0);
         }
+
     System.out.println("You rolled a " + roll);
+    return dice;
     //posibly add the sound of dice rolling.   
     }//end of rollofdice
 
@@ -500,7 +526,7 @@ public static void doBoard(int spaceLanded, int playerID)
 {
     switch(spaceLanded)
     {
-        case 1:
+        case 0:
         {
             if(playerID == 1)
             {
@@ -520,23 +546,23 @@ public static void doBoard(int spaceLanded, int playerID)
             }
             break;
         }
-        case 2:
+        case 1:
         {
             checkPropertyStatus(playerID, "Mediterranean Avenue"); 
             break;
         }
-        case 3:
+        case 2:
         {
             doCommunity(playerID);
             break;
         }
-        case 4:
+        case 3:
         {
             checkPropertyStatus(playerID, "Baltic Avenue");
             
             break;
         }
-        case 5:
+        case 4:
         {
             if(playerID == 1)
             {
@@ -556,137 +582,157 @@ public static void doBoard(int spaceLanded, int playerID)
             }
             break;
         }
-        case 6:
+        case 5:
         {
             checkPropertyStatus(playerID, "Reading Railroad");
             break;
         }
-        case 7:
+        case 6:
         {   
             checkPropertyStatus(playerID, "Oriental Avenue");
             break;
         }
-        case 8:
+        case 7:
         {
             doChance(playerID);
             break;
         }
-        case 9:
+        case 8:
         {
             checkPropertyStatus(playerID, "Vermont Avenue");
             break;
         }
-        case 10:
+        case 9:
         {
             checkPropertyStatus(playerID, "Connecticut Avenue");
             break;
         }
-        case 11:
+        case 10:
         {
             //do nothing
             break;
         }
-        case 12:
+        case 11:
         {
             checkPropertyStatus(playerID, "St. Charles Place");
             break;
         }
-        case 13:
+        case 12:
         {
             checkPropertyStatus(playerID, "Electric Company");
             break;
         }
-        case 14:
+        case 13:
         {
             checkPropertyStatus(playerID, "States Avenue");
             break;
         }
-        case 15:
+        case 14:
         {
             checkPropertyStatus(playerID, "Virginia Avenue");
             break;
         }
-        case 16:
+        case 15:
         {
             checkPropertyStatus(playerID, "Pennsylvania Railroad");
             break;
         }
-        case 17:
+        case 16:
         {
             checkPropertyStatus(playerID, "St. James Place");
             break;
         }
-        case 18:
+        case 17:
         {
             doCommunity(playerID);
             break;
         }
-        case 19:
+        case 18:
         {
             checkPropertyStatus(playerID, "Tennessee Avenue");
             break;
         }
-        case 20:
+        case 19:
         {
             checkPropertyStatus(playerID, "New York Avenue");
             break;
         }
-        case 21:
+        case 20:
         {
             //do nothing
             break;
         }
-        case 22:
+        case 21:
         {
             checkPropertyStatus(playerID, "Kentucky Avenue");
             break;
         }
-        case 23:
+        case 22:
         {
             doChance(playerID);
             break;
         }
-        case 24:
+        case 23:
         {
             checkPropertyStatus(playerID, "Indiana Avenue");
             break;
         }
-        case 25:
+        case 24:
         {
             checkPropertyStatus(playerID, "Illinois Avenue");
             break;
         }
-        case 26:
+        case 25:
         {
             checkPropertyStatus(playerID, "B. & O. Railroad");
             break;
         }
-        case 27:
+        case 26:
         {
             checkPropertyStatus(playerID, "Atlantic Avenue");
             break;
         }
-        case 28:
+        case 27:
         {
             checkPropertyStatus(playerID, "Ventnor Avenue");
             break;
         }
-        case 29:
+        case 28:
         {
             checkPropertyStatus(playerID, "Water Works");
             break;
         }
-        case 30:
+        case 29:
         {
             checkPropertyStatus(playerID, "Marvin Gardens");
             break;
         }
-        case 31:
+        case 30:
         {
             //Make a Jail method
-            if (playerID == 1)
+            
+            if (playerID == 1) && ( )
             {
+                //do jail stuff
                 player1.setPosition(10);
+                
+            }
+            else if (playerID == 2)
+            {
+                player2.setPosition(10);
+            }
+            else if (playerID == 3)
+            {
+                player3.setPosition(10);
+            }
+            else if (playerID == 4)
+            {
+                player4.setPosition(10);
+            }
+            {
+                //do jail stuff
+                player1.setPosition(10);
+                
             }
             else if (playerID == 2)
             {
@@ -702,42 +748,42 @@ public static void doBoard(int spaceLanded, int playerID)
             }
             break;
         }
-        case 32:
+        case 31:
         {
             checkPropertyStatus(playerID, "Pacific Avenue");
             break;
         }
-        case 33:
+        case 32:
         {
             checkPropertyStatus(playerID, "North Carolina Avenue");
             break;
         }
-        case 34:
+        case 33:
         {
             doCommunity(playerID);
             break;
         }
-        case 35:
+        case 34:
         { 
             checkPropertyStatus(playerID, "Pennsylvania Avenue");
             break;
         }
-        case 36:
+        case 35:
         {
             checkPropertyStatus(playerID, "Short Line");
             break;
         }
-        case 37:
+        case 36:
         {
             doChance(playerID);
             break;
         }
-        case 38:
+        case 37:
         {
             checkPropertyStatus(playerID, "Park Place");
             break;
         }
-        case 39:
+        case 38:
         {
             if(playerID == 1)
             {
@@ -757,13 +803,36 @@ public static void doBoard(int spaceLanded, int playerID)
             }
             break;
         }
-        case 40:
+        case 39:
         {
             checkPropertyStatus(playerID, "Boardwalk");
             break;
         }
     }//end switch
 }//end doBoard
+
+
+public static void jail()
+{
+    //do jail stuff
+if (playerID == 1)
+{
+    player1.setPosition(10);
+}
+else if (playerID == 2)
+{
+    player2.setPosition(10);
+}
+else if (playerID == 3)
+{
+    player3.setPosition(10);
+}
+else if (playerID == 4)
+{
+    player4.setPosition(10);
+}
+}
+
 
 public static void doChance(int playerID) {
     if (!chanceCards.isEmpty()) {

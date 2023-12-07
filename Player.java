@@ -12,7 +12,7 @@ public Player ()
     this.Name = "";
     this.PlayerID = 0;
     this.funds = 1500;
-    this.position= 0;
+    this.position = 0;
 }
 
 public void removeMoney(int amount)
