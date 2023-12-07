@@ -65,7 +65,7 @@ public class Monopoly
     public static void turn(int currentPlayerID) 
     {
         System.out.println("do you want to take your turn? type y for yes and n to immediately end the whole game");
-        Scanner in2 = new Scanner(System.in);
+        Scanner in2 = new Scanner(System.in); //scanner
         String turn = in2.nextLine();
             
             if (turn.equals("y")){
@@ -136,7 +136,7 @@ public class Monopoly
             {
                 System.out.println("You are in jail. You can either pay $50 to get out or roll doubles.");
                 System.out.println("Do you want to pay $50 to get out? Type y for yes and n for no.");
-                Scanner input = new Scanner(System.in);
+                Scanner input = new Scanner(System.in); //scanner 
                 String  turn = input.nextLine();
                 if (turn.equals("y"))
                 {
@@ -171,7 +171,7 @@ public class Monopoly
             {
                 System.out.println("You are in jail. You can either pay $50 to get out or roll doubles.");
                 System.out.println("Do you want to pay $50 to get out? Type y for yes and n for no.");
-                Scanner input = new Scanner(System.in);
+                Scanner input = new Scanner(System.in); //scanner
                 String  turn = input.nextLine();
                 if (turn.equals("y"))
                 {
@@ -206,7 +206,7 @@ public class Monopoly
             {
                 System.out.println("You are in jail. You can either pay $50 to get out or roll doubles.");
                 System.out.println("Do you want to pay $50 to get out? Type y for yes and n for no.");
-                Scanner input = new Scanner(System.in);
+                Scanner input = new Scanner(System.in); //scanner 
                 String  turn = input.nextLine();
                 if (turn.equals("y"))
                 {
@@ -241,7 +241,7 @@ public class Monopoly
             {
                 System.out.println("You are in jail. You can either pay $50 to get out or roll doubles.");
                 System.out.println("Do you want to pay $50 to get out? Type y for yes and n for no.");
-                Scanner input = new Scanner(System.in);
+                Scanner input = new Scanner(System.in); //scanner
                 String  turn = input.nextLine();
                 if (turn.equals("y"))
                 {
@@ -343,7 +343,7 @@ public class Monopoly
             Property currentProperty = propertyDeck.get(propName);
             System.out.println("It costs $" + currentProperty.getBuildingCost() + " to build a house on " + propName + ".");
             System.out.println("Do you want to build on " + propName + "? Type y for yes and n for no.");
-            Scanner input = new Scanner(System.in);
+            Scanner input = new Scanner(System.in); //scanner
             String  answer = input.nextLine();
             if (answer.equals("y"))
             {
@@ -375,7 +375,7 @@ public class Monopoly
             Property currentProperty = propertyDeck.get(propName);
             System.out.println("It costs $" + currentProperty.getBuildingCost() + " to build a house on " + propName + ".");
             System.out.println("Do you want to build on " + propName + "? Type y for yes and n for no.");
-            Scanner input = new Scanner(System.in);
+            Scanner input = new Scanner(System.in); //scanner
             String  answer = input.nextLine();
             if (answer.equals("y"))
             {
@@ -407,7 +407,7 @@ public class Monopoly
             Property currentProperty = propertyDeck.get(propName);
             System.out.println("It costs $" + currentProperty.getBuildingCost() + " to build a house on " + propName + ".");
             System.out.println("Do you want to build on " + propName + "? Type y for yes and n for no.");
-            Scanner input = new Scanner(System.in);
+            Scanner input = new Scanner(System.in); //scanner 
             String  answer = input.nextLine();
             if (answer.equals("y"))
             {
@@ -439,7 +439,7 @@ public class Monopoly
             Property currentProperty = propertyDeck.get(propName);
             System.out.println("It costs $" + currentProperty.getBuildingCost() + " to build a house on " + propName + ".");
             System.out.println("Do you want to build on " + propName + "? Type y for yes and n for no.");
-            Scanner input = new Scanner(System.in);
+            Scanner input = new Scanner(System.in); //scanner
             String  answer = input.nextLine();
             if (answer.equals("y"))
             {
@@ -499,7 +499,7 @@ public class Monopoly
         propertyDeck = createProperties();
 
 
-        Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(System.in); //scanner 
         if(numberOfPlayers == 2)
         {
             System.out.println("What is the name for Player 1 ?");
@@ -1045,7 +1045,7 @@ public static void checkIfTheyWannaSellStuff(int playerID)
     if (playerID == 1)
     {
         System.out.println("Do you want to sell any of your properties? Type y for yes and n for no.");
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); //scanner 
         String  turn = input.nextLine();
         if (turn.equals("y"))
         {
@@ -1069,7 +1069,7 @@ public static void checkIfTheyWannaSellStuff(int playerID)
     else if (playerID == 2)
     {
         System.out.println("Do you want to sell any of your properties? Type y for yes and n for no.");
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); //sanner
         String  turn = input.nextLine();
         if (turn.equals("y"))
         {
@@ -1093,7 +1093,7 @@ public static void checkIfTheyWannaSellStuff(int playerID)
     else if (playerID == 3)
     {
         System.out.println("Do you want to sell any of your properties? Type y for yes and n for no.");
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); //scanner
         String  turn = input.nextLine();
         if (turn.equals("y"))
         {
@@ -1117,7 +1117,7 @@ public static void checkIfTheyWannaSellStuff(int playerID)
     else if (playerID == 4)
     {
         System.out.println("Do you want to sell any of your properties? Type y for yes and n for no.");
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); //scanner
         String  turn = input.nextLine();
         if (turn.equals("y"))
         {
