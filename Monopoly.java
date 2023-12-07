@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 public class Monopoly 
 {
     public static Player player1 = new Player();
@@ -23,7 +22,7 @@ public class Monopoly
         
         //turns until game end
         gameTilEnd(numberOfPlayers);
-
+    
     }// end main
 
     public static int welcome()
@@ -33,6 +32,9 @@ public class Monopoly
         System.out.println("There is no auctioning off properties, there are 2 chance cards missing and there is no trading.");
         System.out.println("There are 2 commmunity chest cards missing. Luxury tax is $100 and income tax is $200.");
         System.out.println("the jail is not exactly based on the rules you can choose to not pay the 50$ indefinitely");
+        System.out.println("There is also no mortgaging. Sorry it is hard to make monopoly in java.");
+        System.out.println("instead of mortaging you can sell your properties back to the bank for the same price you paid");
+        System.out.println("Of course all of these exceptions kinda breaks the game but monopoly is a super hard game to code so deal with it");
         System.out.println("and it ends when the first player goes bankrupt. So that it does not take forever to play.");
         System.out.println("enter the number of players currently the code will only work with 4 players");
         System.out.println("if you only have 1 friend you must go make more friends to play this game");
@@ -60,11 +62,28 @@ public class Monopoly
         }while(player1.funds > 0 && player2.funds > 0 && player3.funds > 0 && player4.funds > 0);
    }
 
-    public static void turn(int currentPlayerID)
+    public static void turn(int currentPlayerID) 
     {
         System.out.println("do you want to take your turn? type y for yes and n to immediately end the whole game");
-        Scanner input = new Scanner(System.in);
-        String  turn = input.nextLine();
+        Scanner in2 = new Scanner(System.in);
+        String turn = in2.nextLine();
+            
+            if (turn.equals("y")){
+                
+            }
+            else if (turn.equals("n")){
+                System.out.println("you have ended the game");
+                player1.funds = 0;
+                player2.funds = 0;
+                player3.funds = 0;
+                player4.funds = 0;
+                 
+                //move to 
+            }
+            else{
+                System.out.println("please enter a valid input");
+                turn(currentPlayerID);
+            }
         if (turn.equals("y")){
 
             checkJailAndDealWithIt(currentPlayerID);
@@ -104,8 +123,10 @@ public class Monopoly
             System.out.println("please enter a valid input");
             turn(currentPlayerID);
         }
+
+        in2.close();}
         
-    }
+    
     
     public static void checkJailAndDealWithIt (int playerID)
     {
@@ -529,6 +550,7 @@ public class Monopoly
             System.out.println("Error wrong number of players !!!!!!!!");
         }
         in.close();
+        
     }
 
 //roll method5
@@ -706,17 +728,17 @@ public class Monopoly
         Stack<String> chanceCards = new Stack<String>();
 
         ArrayList<Integer> order = new ArrayList<Integer>();
-        while (order.size() < 16)
+        while (order.size() < 14)
         {
             Random rand = new Random();
-            int rand1 = rand.nextInt(16);
+            int rand1 = rand.nextInt(14);
             if (!(order.contains(rand1)))
             {
                 order.add(rand1);
             }
         }
 
-        for (int x = 0; x < 16; x++)
+        for (int x = 0; x < 14; x++)
         {
             chanceCards.push(chance.get(order.get(x)));
         }
@@ -748,17 +770,17 @@ public class Monopoly
         Stack<String> communityCards = new Stack<String>();
 
         ArrayList<Integer> order = new ArrayList<Integer>();
-        while (order.size() < 16)
+        while (order.size() < 14)
         {
             Random rand = new Random();
-            int rand1 = rand.nextInt(16);
+            int rand1 = rand.nextInt(14);
             if (!(order.contains(rand1)))
             {
                 order.add(rand1);
             }
         }
 
-        for (int x = 0; x < 16; x++)
+        for (int x = 0; x < 14; x++)
         {
             communityCards.push(communityChest.get(order.get(x)));
         }
@@ -811,7 +833,8 @@ public static void checkPropertyStatus(int playerID, String propertyName)
     } // end buy contingency
 
     //paying rent 
-    else if ((currentProperty.getOwner() != playerID) && (currentProperty.getMortgaged() != true)){
+    checkAndChangeMonopolySatatus(propertyName);
+    if ((currentProperty.getOwner() != playerID) && (currentProperty.getMortgaged() != true)){
         // Remove rent from playerID
         if (playerID == 1)
         {
@@ -889,6 +912,133 @@ public static void checkPropertyStatus(int playerID, String propertyName)
     }
     return;
 }
+
+public static void checkAndChangeMonopolySatatus(String propertyName)
+{
+    Property currentProperty = propertyDeck.get(propertyName);
+    String color = currentProperty.getColor();
+    if (color.equals("Brown"))
+    {
+        if (propertyDeck.get("Mediterranean Avenue").getOwner() == propertyDeck.get("Baltic Avenue").getOwner())
+        {
+            propertyDeck.get("Mediterranean Avenue").setisMonopoly(true);
+            propertyDeck.get("Baltic Avenue").setisMonopoly(true);
+        }
+        else
+        {
+            propertyDeck.get("Mediterranean Avenue").setisMonopoly(false);
+            propertyDeck.get("Baltic Avenue").setisMonopoly(false);
+        }
+    }
+    else if (color.equals("Light Blue"))
+    {
+        if (propertyDeck.get("Oriental Avenue").getOwner() == propertyDeck.get("Vermont Avenue").getOwner() && propertyDeck.get("Oriental Avenue").getOwner() == propertyDeck.get("Connecticut Avenue").getOwner())
+        {
+            propertyDeck.get("Oriental Avenue").setisMonopoly(true);
+            propertyDeck.get("Vermont Avenue").setisMonopoly(true);
+            propertyDeck.get("Connecticut Avenue").setisMonopoly(true);
+        }
+        else
+        {
+            propertyDeck.get("Oriental Avenue").setisMonopoly(false);
+            propertyDeck.get("Vermont Avenue").setisMonopoly(false);
+            propertyDeck.get("Connecticut Avenue").setisMonopoly(false);
+        }
+    }
+    else if (color.equals("Pink"))
+    {
+        if (propertyDeck.get("St. Charles Place").getOwner() == propertyDeck.get("States Avenue").getOwner() && propertyDeck.get("St. Charles Place").getOwner() == propertyDeck.get("Virginia Avenue").getOwner())
+        {
+            propertyDeck.get("St. Charles Place").setisMonopoly(true);
+            propertyDeck.get("States Avenue").setisMonopoly(true);
+            propertyDeck.get("Virginia Avenue").setisMonopoly(true);
+        }
+        else
+        {
+            propertyDeck.get("St. Charles Place").setisMonopoly(false);
+            propertyDeck.get("States Avenue").setisMonopoly(false);
+            propertyDeck.get("Virginia Avenue").setisMonopoly(false);
+        }
+    }
+    else if (color.equals("Orange"))
+    {
+        if (propertyDeck.get("St. James Place").getOwner() == propertyDeck.get("Tennessee Avenue").getOwner() && propertyDeck.get("St. James Place").getOwner() == propertyDeck.get("New York Avenue").getOwner())
+        {
+            propertyDeck.get("St. James Place").setisMonopoly(true);
+            propertyDeck.get("Tennessee Avenue").setisMonopoly(true);
+            propertyDeck.get("New York Avenue").setisMonopoly(true);
+        }
+        else
+        {
+            propertyDeck.get("St. James Place").setisMonopoly(false);
+            propertyDeck.get("Tennessee Avenue").setisMonopoly(false);
+            propertyDeck.get("New York Avenue").setisMonopoly(false);
+        }
+    }
+    else if (color.equals("Red"))
+    {
+        if (propertyDeck.get("Kentucky Avenue").getOwner() == propertyDeck.get("Indiana Avenue").getOwner() && propertyDeck.get("Kentucky Avenue").getOwner() == propertyDeck.get("Illinois Avenue").getOwner())
+        {
+            propertyDeck.get("Kentucky Avenue").setisMonopoly(true);
+            propertyDeck.get("Indiana Avenue").setisMonopoly(true);
+            propertyDeck.get("Illinois Avenue").setisMonopoly(true);
+        }
+        else
+        {
+            propertyDeck.get("Kentucky Avenue").setisMonopoly(false);
+            propertyDeck.get("Indiana Avenue").setisMonopoly(false);
+            propertyDeck.get("Illinois Avenue").setisMonopoly(false);
+        }
+    }
+    else if (color.equals("Yellow"))
+    {
+        if (propertyDeck.get("Atlantic Avenue").getOwner() == propertyDeck.get("Ventnor Avenue").getOwner() && propertyDeck.get("Atlantic Avenue").getOwner() == propertyDeck.get("Marvin Gardens").getOwner())
+        {
+            propertyDeck.get("Atlantic Avenue").setisMonopoly(true);
+            propertyDeck.get("Ventnor Avenue").setisMonopoly(true);
+            propertyDeck.get("Marvin Gardens").setisMonopoly(true);
+        }
+        else
+        {
+            propertyDeck.get("Atlantic Avenue").setisMonopoly(false);
+            propertyDeck.get("Ventnor Avenue").setisMonopoly(false);
+            propertyDeck.get("Marvin Gardens").setisMonopoly(false);
+        }
+    }
+    else if (color.equals("Green"))
+    {
+        if (propertyDeck.get("Pacific Avenue").getOwner() == propertyDeck.get("North Carolina Avenue").getOwner() && propertyDeck.get("Pacific Avenue").getOwner() == propertyDeck.get("Pennsylvania Avenue").getOwner())
+        {
+            propertyDeck.get("Pacific Avenue").setisMonopoly(true);
+            propertyDeck.get("North Carolina Avenue").setisMonopoly(true);
+            propertyDeck.get("Pennsylvania Avenue").setisMonopoly(true);
+        }
+        else
+        {
+            propertyDeck.get("Pacific Avenue").setisMonopoly(false);
+            propertyDeck.get("North Carolina Avenue").setisMonopoly(false);
+            propertyDeck.get("Pennsylvania Avenue").setisMonopoly(false);
+        }
+    }
+    else if (color.equals("Blue"))
+    {
+        if (propertyDeck.get("Park Place").getOwner() == propertyDeck.get("Boardwalk").getOwner())
+        {
+            propertyDeck.get("Park Place").setisMonopoly(true);
+            propertyDeck.get("Boardwalk").setisMonopoly(true);
+        }
+        else
+        {
+            propertyDeck.get("Park Place").setisMonopoly(false);
+            propertyDeck.get("Boardwalk").setisMonopoly(false);
+        }
+    }
+    else
+    {
+        //do nothing
+    }
+}
+
 
 public static void checkIfTheyWannaSellStuff(int playerID)
 {
@@ -1181,38 +1331,23 @@ public static void doBoard(int spaceLanded, int playerID)
             
             if (playerID == 1)
             {
-                //do jail stuff
-                player1.setPosition(10);
-                
+                player1.position = 10;
+                jail(1);
             }
             else if (playerID == 2)
             {
-                player2.setPosition(10);
+                player2.position = 10;
+                jail(2);
             }
             else if (playerID == 3)
             {
-                player3.setPosition(10);
+                player3.position = 10;
+                jail(3);
             }
             else if (playerID == 4)
             {
-                player4.setPosition(10);
-            }
-            {
-                //do jail stuff
-                player1.setPosition(10);
-                
-            }
-            else if (playerID == 2)
-            {
-                player2.setPosition(10);
-            }
-            else if (playerID == 3)
-            {
-                player3.setPosition(10);
-            }
-            else if (playerID == 4)
-            {
-                player4.setPosition(10);
+                player4.position = 10;
+                jail(4);
             }
             break;
         }
@@ -1991,6 +2126,14 @@ public static void doCommunity(int playerID)
     }
 }
 
+
+
+
+
+//methods that Amo and Henry worked on and I will not delete I feel bad because I didn't communicate effectly
+// which caused them to create these methods and then I created my own methods. Our views for the project differed and I didn't
+//know how to implement their methods into my code. I will not delete them because they worked hard on them and I don't want to
+//erase them from the project. I'm sorry guys.
  
 
 
@@ -2286,4 +2429,6 @@ public static void end game check() {
 
 
 */
+
+
 }//end class

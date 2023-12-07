@@ -19,6 +19,7 @@
         public int owned3;
         public int owned4;
         public boolean mortgaged;
+        public boolean isMonopoly;
 
         //regular property constructor
         public Property(String name, String color, int cost, int rent, int colorset, int house1,int house2, int house3,int house4, int hotel, int mortgage, int buildingCost){
@@ -38,6 +39,7 @@
             this.hotels = 0;
             this.mortgaged = false;
             this.owner = 0;
+            this.isMonopoly = false;
 
         }
         
@@ -77,7 +79,9 @@
             return this.owner;
         }
 
-        
+
+
+
         // generate getters and setters
         public String getName(){
             return this.name;
@@ -103,10 +107,39 @@
         // Create get rent for regular properties
         // And another for railroads and another for utilities
         public int getRent(){
-            return this.rent;
+            if(this.houses == 0 && this.hotels == 0 && this.isMonopoly == false){
+                return this.rent;
+            }
+            else if(this.isMonopoly == true){
+                return this.colorset;
+            }
+            else if(this.mortgaged == true){
+                return 0;
+            }
+            else if(this.houses == 1){
+                return this.house1;
+            }
+            else if(this.houses == 2){
+                return this.house2;
+            }
+            else if(this.houses == 3){
+                return this.house3;
+            }
+            else if(this.houses == 4){
+                return this.house4;
+            }
+            else if(this.hotels == 1){
+                return this.hotel;
+            }
+            else{
+                return 0;
+            }
+
         }
 
-
+        public void setisMonopoly(boolean isMonopoly){
+            this.isMonopoly = isMonopoly;
+        }
 
         public void setRent(int rent){
             this.rent = rent;
