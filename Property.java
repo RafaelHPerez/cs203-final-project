@@ -44,17 +44,18 @@
         }
         
         //utility constructor
-        public Property(String name, int cost, int rent, int mortgage){
+        public Property(String name, int cost, int rent, int mortgage, String color){
         this.name = name;
         this.cost = cost;
         this.rent = rent;
         this.mortgage = mortgage;
         this.owner = 0;
         this.mortgaged = false;
+        this.color = color;
         }
 
         //railroad constructor
-        public Property(String name, int cost, int rent, int owned2,int owned3, int owned4,  int mortgage){
+        public Property(String name, int cost, int rent, int owned2,int owned3, int owned4,  int mortgage, String color){
         this.name = name;
         this.cost = cost;
         this.rent = rent;
@@ -64,6 +65,7 @@
         this.owned3 = owned3;
         this.owned4 = owned4;
         this.mortgaged = false;
+        this.color = color;
         }
         
         public boolean isOwned(){

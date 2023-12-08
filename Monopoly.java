@@ -10,6 +10,8 @@ public class Monopoly
     public static Stack<String> chanceCards = new Stack<String>();
     public static Stack<String> communityCards = new Stack<String>();
     public static HashMap<String, Property> propertyDeck = new HashMap<String, Property>();
+    public static Scanner in = new Scanner(System.in); //scanner
+
 
     public static void main(String[] args) 
     {
@@ -38,8 +40,9 @@ public class Monopoly
         System.out.println("and it ends when the first player goes bankrupt. So that it does not take forever to play.");
         System.out.println("enter the number of players currently the code will only work with 4 players");
         System.out.println("if you only have 1 friend you must go make more friends to play this game");
-        Scanner input = new Scanner(System.in);
-        int welcome = input.nextInt();
+        System.out.println("passing go dose not give you 200$");
+        
+        int welcome = in.nextInt();
         
         return welcome;
     }
@@ -64,9 +67,8 @@ public class Monopoly
 
     public static void turn(int currentPlayerID) 
     {
-        System.out.println("do you want to take your turn? type y for yes and n to immediately end the whole game");
-        Scanner in2 = new Scanner(System.in); //scanner
-        String turn = in2.nextLine();
+        System.out.println("do you want to take your turn? PLAYER: " + currentPlayerID + " type y for yes and n to immediately end the whole game");
+        String turn = in.nextLine();
             
             if (turn.equals("y")){
                 
@@ -123,8 +125,7 @@ public class Monopoly
             System.out.println("please enter a valid input");
             turn(currentPlayerID);
         }
-
-        in2.close();}
+    }
         
     
     
@@ -136,8 +137,7 @@ public class Monopoly
             {
                 System.out.println("You are in jail. You can either pay $50 to get out or roll doubles.");
                 System.out.println("Do you want to pay $50 to get out? Type y for yes and n for no.");
-                Scanner input = new Scanner(System.in); //scanner 
-                String  turn = input.nextLine();
+                String  turn = in.nextLine();
                 if (turn.equals("y"))
                 {
                     player1.removeMoney(50);
@@ -171,8 +171,7 @@ public class Monopoly
             {
                 System.out.println("You are in jail. You can either pay $50 to get out or roll doubles.");
                 System.out.println("Do you want to pay $50 to get out? Type y for yes and n for no.");
-                Scanner input = new Scanner(System.in); //scanner
-                String  turn = input.nextLine();
+                String  turn = in.nextLine();
                 if (turn.equals("y"))
                 {
                     player2.removeMoney(50);
@@ -206,8 +205,7 @@ public class Monopoly
             {
                 System.out.println("You are in jail. You can either pay $50 to get out or roll doubles.");
                 System.out.println("Do you want to pay $50 to get out? Type y for yes and n for no.");
-                Scanner input = new Scanner(System.in); //scanner 
-                String  turn = input.nextLine();
+                String  turn = in.nextLine();
                 if (turn.equals("y"))
                 {
                     player3.removeMoney(50);
@@ -241,8 +239,7 @@ public class Monopoly
             {
                 System.out.println("You are in jail. You can either pay $50 to get out or roll doubles.");
                 System.out.println("Do you want to pay $50 to get out? Type y for yes and n for no.");
-                Scanner input = new Scanner(System.in); //scanner
-                String  turn = input.nextLine();
+                String  turn = in.nextLine();
                 if (turn.equals("y"))
                 {
                     player4.removeMoney(50);
@@ -250,7 +247,8 @@ public class Monopoly
                 }
                 else if (turn.equals("n"))
                 {
-                    ArrayList<Integer> dice = rollofdice();
+                    ArrayList<Integer> dice = new ArrayList<Integer>();
+                    dice = rollofdice();
                     int progress = dice.get(0);
                     int doubles = dice.get(1);
                     if (doubles == 1)
@@ -343,8 +341,7 @@ public class Monopoly
             Property currentProperty = propertyDeck.get(propName);
             System.out.println("It costs $" + currentProperty.getBuildingCost() + " to build a house on " + propName + ".");
             System.out.println("Do you want to build on " + propName + "? Type y for yes and n for no.");
-            Scanner input = new Scanner(System.in); //scanner
-            String  answer = input.nextLine();
+            String  answer = in.nextLine();
             if (answer.equals("y"))
             {
                 player1.removeMoney(currentProperty.getBuildingCost());
@@ -375,8 +372,7 @@ public class Monopoly
             Property currentProperty = propertyDeck.get(propName);
             System.out.println("It costs $" + currentProperty.getBuildingCost() + " to build a house on " + propName + ".");
             System.out.println("Do you want to build on " + propName + "? Type y for yes and n for no.");
-            Scanner input = new Scanner(System.in); //scanner
-            String  answer = input.nextLine();
+            String  answer = in.nextLine();
             if (answer.equals("y"))
             {
                 player2.removeMoney(currentProperty.getBuildingCost());
@@ -407,8 +403,7 @@ public class Monopoly
             Property currentProperty = propertyDeck.get(propName);
             System.out.println("It costs $" + currentProperty.getBuildingCost() + " to build a house on " + propName + ".");
             System.out.println("Do you want to build on " + propName + "? Type y for yes and n for no.");
-            Scanner input = new Scanner(System.in); //scanner 
-            String  answer = input.nextLine();
+            String  answer = in.nextLine();
             if (answer.equals("y"))
             {
                 player3.removeMoney(currentProperty.getBuildingCost());
@@ -439,8 +434,7 @@ public class Monopoly
             Property currentProperty = propertyDeck.get(propName);
             System.out.println("It costs $" + currentProperty.getBuildingCost() + " to build a house on " + propName + ".");
             System.out.println("Do you want to build on " + propName + "? Type y for yes and n for no.");
-            Scanner input = new Scanner(System.in); //scanner
-            String  answer = input.nextLine();
+            String  answer = in.nextLine();
             if (answer.equals("y"))
             {
                 player4.removeMoney(currentProperty.getBuildingCost());
@@ -499,7 +493,6 @@ public class Monopoly
         propertyDeck = createProperties();
 
 
-        Scanner in = new Scanner(System.in); //scanner 
         if(numberOfPlayers == 2)
         {
             System.out.println("What is the name for Player 1 ?");
@@ -549,7 +542,6 @@ public class Monopoly
         {
             System.out.println("Error wrong number of players !!!!!!!!");
         }
-        in.close();
         
     }
 
@@ -577,6 +569,8 @@ public class Monopoly
     //posibly add the sound of dice rolling.   
     }//end of rollofdice
 
+   
+     
 
 
 //create Board
@@ -658,13 +652,13 @@ public class Monopoly
  
 
     
-    Property prop23 = new Property("Reading Railroad",  200, 25, 50, 100, 200, 100);
-    Property prop24 = new Property("Pennsylvania Railroad",  200, 25, 50, 100, 200, 100);
-    Property prop25 = new Property("B. & O. Railroad",  200, 25,50, 100, 200, 100);
-    Property prop26 = new Property("Short Line", 200, 25, 50, 100, 200,100); 
+    Property prop23 = new Property("Reading Railroad",  200, 25, 50, 100, 200, 100, "black");
+    Property prop24 = new Property("Pennsylvania Railroad",  200, 25, 50, 100, 200, 100, "black");
+    Property prop25 = new Property("B. & O. Railroad",  200, 25,50, 100, 200, 100, "black" );
+    Property prop26 = new Property("Short Line", 200, 25, 50, 100, 200,100, "black"); 
     
-    Property prop27 = new Property("Electric Company",  150, 0, 75);
-    Property prop28 = new Property("Water Works",  150, 0, 75);
+    Property prop27 = new Property("Electric Company",  150, 0, 75, "white");
+    Property prop28 = new Property("Water Works",  150, 0, 75, "white");
 
     
     propertyDeck.put("Mediterranean Avenue", prop1); 
@@ -696,11 +690,8 @@ public class Monopoly
     propertyDeck.put("Short Line", prop26);
     propertyDeck.put("Electric Company", prop27);
     propertyDeck.put("Water Works", prop28);
-    
-
 
     return propertyDeck;
-    
     }
 
 
@@ -1045,12 +1036,11 @@ public static void checkIfTheyWannaSellStuff(int playerID)
     if (playerID == 1)
     {
         System.out.println("Do you want to sell any of your properties? Type y for yes and n for no.");
-        Scanner input = new Scanner(System.in); //scanner 
-        String  turn = input.nextLine();
+        String  turn = in.nextLine();
         if (turn.equals("y"))
         {
             System.out.println("Which property do you want to sell?");
-            String  property = input.nextLine();
+            String  property = in.nextLine();
             Property currentProperty = propertyDeck.get(property);
             int propertyCost = currentProperty.getCost();
             player1.addMoney(propertyCost);
@@ -1069,12 +1059,11 @@ public static void checkIfTheyWannaSellStuff(int playerID)
     else if (playerID == 2)
     {
         System.out.println("Do you want to sell any of your properties? Type y for yes and n for no.");
-        Scanner input = new Scanner(System.in); //sanner
-        String  turn = input.nextLine();
+        String  turn = in.nextLine();
         if (turn.equals("y"))
         {
             System.out.println("Which property do you want to sell?");
-            String  property = input.nextLine();
+            String  property = in.nextLine();
             Property currentProperty = propertyDeck.get(property);
             int propertyCost = currentProperty.getCost();
             player2.addMoney(propertyCost);
@@ -1093,12 +1082,11 @@ public static void checkIfTheyWannaSellStuff(int playerID)
     else if (playerID == 3)
     {
         System.out.println("Do you want to sell any of your properties? Type y for yes and n for no.");
-        Scanner input = new Scanner(System.in); //scanner
-        String  turn = input.nextLine();
+        String  turn = in.nextLine();
         if (turn.equals("y"))
         {
             System.out.println("Which property do you want to sell?");
-            String  property = input.nextLine();
+            String  property = in.nextLine();
             Property currentProperty = propertyDeck.get(property);
             int propertyCost = currentProperty.getCost();
             player3.addMoney(propertyCost);
@@ -1117,12 +1105,11 @@ public static void checkIfTheyWannaSellStuff(int playerID)
     else if (playerID == 4)
     {
         System.out.println("Do you want to sell any of your properties? Type y for yes and n for no.");
-        Scanner input = new Scanner(System.in); //scanner
-        String  turn = input.nextLine();
+        String  turn = in.nextLine();
         if (turn.equals("y"))
         {
             System.out.println("Which property do you want to sell?");
-            String  property = input.nextLine();
+            String  property = in.nextLine();
             Property currentProperty = propertyDeck.get(property);
             int propertyCost = currentProperty.getCost();
             player4.addMoney(propertyCost);
